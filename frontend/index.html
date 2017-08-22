@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Collapsible Bootstrap Dashboard.css with Icons</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/876270/dashboard.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class="row">
+	<div class="col-md-12">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-header">
+      <a class="navbar-brand" title="Look with your special eyes" href="#">
+        My Brand
+      </a>
+		
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="https://www.codepen.io/erikashewan" target="_blank">Home</a></li>
+			<li><a href="http://www.erikashewan.com" target="_blank">About</a></li>
+			<li><a href="https://www.twitter.com/erikashewan" target="_blank">Contact Us</a></li>
+		</ul>
+    </div>
+</nav>	
+	</div>
+</div>
+<div class="row">
+<div class="sidebar">
+
+	<div class="collapseToggle">
+			<span id="toggleIcon" class="fa fa-chevron-left"></span>
+		</div>
+
+    <ul class="nav nav-sidebar">
+
+        <li>
+					<a href="https://www.codepen.io/erikashewan" target="_blank">
+						<span class="fa fa-codepen"></span> 
+						<span class="menuText">Home</span>
+					</a>
+        </li>
+			        <li> 
+					<a href="http://www.erikashewan.com" target="_blank">
+						<span class="fa fa-user-circle-o"></span> 
+						<span class="menuText">Profile</span>
+					</a>
+			</li>
+			
+			        <li> 
+					<a href="https://www.twitter.com/erikashewan" target="_blank">
+						<span class="fa fa-twitter"></span> 
+						<span class="menuText">@ErikaShewan</span>
+					</a>
+			</li>
+    </ul>
+</div>
+	<div class="main">
+			Collapsible Bootstrap Dashboard.css, using CSS & JQuery. Abrupt changes don't exist in the physical world, so here we're using a variety of CSS transitions to demonstrate to the user what's happening in the interface.
+		<br/>
+		<br/>
+		<ul>
+			<li> <strong>Stateful Toggle</strong> </li>
+				<ul>
+					<li>
+						The cheveron rotates as the menu collapses. This tells the user that the meaning of the icon has changed, and that clicking on it again will make the button perform an action differently. In this case, the menu will re-expand.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		
+		
+		<ul>
+			<li> <strong>Animated Collapse</strong></li>
+				<ul>
+					<li>
+						The transition of the width & fading of the labels tells the user the menu options didn't just disappear or get cut in half. The menu slides to the left and the labels fade out to convey to the user that the menu is collapsing to give them more screenspace.
+					</li>
+				</ul>
+			</li>
+		</ul>
+</div>
+	</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
