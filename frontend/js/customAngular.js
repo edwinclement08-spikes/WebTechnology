@@ -16,7 +16,7 @@ app.controller("articleTabsCTL", function () {
         "Science": [
             {
                 "title":"dsf2ds",
-                "content":"dsfdfs",
+                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
                 "link":""
             },
             {

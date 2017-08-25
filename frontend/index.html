@@ -25,7 +25,7 @@
     }
   </style>
   <div id="header">
-    <h1><a href="dashboard.html">Matrix Admin</a></h1>
+    <h1><a href="dashboard.html">Squid v0.1</a></h1>
   </div>
   <!--close-Header-part-->
 
@@ -80,7 +80,6 @@
     <div id="content-header">
       <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
     </div>
-    {{workspace.temp}}
     <!--End-breadcrumbs-->
     <div class="row-fluid">
       <div class="span12" ng-controller="articleTabsCTL as articles">
@@ -95,67 +94,18 @@
           <div class="widget-content tab-content">
         
             <div id="#tab_{{tabTitle}}" ng-class="{ 'active':(articles.currentTab == '{{tabTitle}}')}" class="tab-pane" ng-repeat="(tabTitle, tabContent) in articles.tabData"> 
-              {{tabTitle}}
-              <hr>
-              {{tabContent}}
-             
+                
+                <div  id="#tabItem_{{tabItem}}" class="span4"  ng-repeat="tabItem in tabContent">
+                  <div class="widget-box">
+                    <div class="widget-title">{{tabItem.title}}</div>
+                    <div class="widget-content tab-content">
+                      {{tabItem.content}}
+                    </div>
+                  </div>
+                </div>
+  
             </div>
-<hr>
-    <!-- <div id="tab1" class="tab-pane">
-           
-              <div class="span4">
-                <div class="widget-box">
-                  <div class="widget-title">
-                    fse
-                  </div>
-                  <div class="widget-content tab-content">
-                    sfesgfhfghghfefse sfesdfgfdhdghkjkhjkyuouyitefse
-                  </div>
-                </div>
-              </div>
 
-              <div class="span4">
-                <div class="widget-box">
-                  <div class="widget-title">
-                    fse
-                  </div>
-                  <div class="widget-content tab-content">
-                    sfesefse
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="widget-box">
-                  <div class="widget-title">
-                    fse
-                  </div>
-                  <div class="widget-content tab-content">
-                    sfesefse
-                  </div>
-                </div>
-              </div>
-
-              <div class="span4">
-                <div class="widget-box">
-                  <div class="widget-title">
-                    fse
-                  </div>
-                  <div class="widget-content tab-content">
-                    sfesefse
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="widget-box">
-                  <div class="widget-title">
-                    fse
-                  </div>
-                  <div class="widget-content tab-content">
-                    sfesefse
-                  </div>
-                </div>
-              </div>
-            </div> -->
             <!-- <div id="tab2" class="tab-pane"> <img src="img/demo/demo-image2.jpg" alt="demo-image" />
               <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually,
                 you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad
