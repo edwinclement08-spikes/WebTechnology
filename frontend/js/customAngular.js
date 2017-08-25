@@ -1,12 +1,22 @@
 var app = angular.module('squid', []);
 
+app.controller("pageCtl", function()    {
+
+});
+
+app.filter('trusted',
+    function($sce) {
+        return function(ss) {
+                return $sce.trustAsHtml(ss)
+            };
+    }
+)
 
 app.controller("workspaceCTL", function () {
     this.temp = "Testing workspace controller";
 
 }
 );
-
 
 
 app.controller("articleTabsCTL", function () {
