@@ -145,10 +145,7 @@ app.controller("trendingCTL", function () {
     this.articles = [
             {
                 "title":"dsf2ds",
-                "content":"dsfdsfdsf<br>fgf<b>rgrdrrfgdsdgrf<br>\
-                tgdfrrrrrrrrrrrrrrrrrrrrrrrrrrgdd\
-                tgdfrrrrrrrrrrrrrrrrrrrrrrrrrrgdd\
-                tgdfrrrrrrrrrrrrrrrrrrrrrrrrrrgdd</b>fs",
+                "content":"dsfdsfdsf<br>fgf<b>",
                 "link":""
             },
             {
