@@ -87,8 +87,8 @@
         <div class="widget-box">
           <div class="widget-title">
             <ul class="nav nav-tabs" >
-                <li ng-class="'active': articles.currentTab == '{{tabTitle}}'" ng-repeat="tabTitle in articles.tabs">
-                  <a href="" ng-click="articles.currentTab = '{{tabTitle}}'" >{{tabTitle}}</a>
+                <li ng-class="{'active': articles.currentTab == '{{tabTitle}}'}" ng-repeat="tabTitle in articles.tabs">
+                  <a href="" ng-click="articles.currentTab = tabTitle" >{{tabTitle}}</a>
                 </li> 
             </ul>
           </div>
