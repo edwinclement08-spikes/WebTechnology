@@ -196,8 +196,8 @@
               <div class="widget-box" id="trending-mainBox">
                 <!-- <div class="widget-title">Trending Articles</div> -->
                 <div class="widget-content  tab-content">
-                    <div class="row-fluid">
-                  <div class="span4 news-data" ng-repeat="article in trending.articles">
+                    <div class="row-fluid" >
+                  <div class="span4 news-data " ng-repeat="article in trending.articles">
                     <div class="widget-box">
                       <div class="widget-title posts">{{article.title}}</div>
                       <div class="widget-content tab-content" ng-bind-html="article.content | trusted">
@@ -231,10 +231,14 @@
 
 
   <script src="js/common/angular.min.js"></script>
+  <script src="js/common/angular-masonry.min.js"></script>
   <script src="js/customAngular.js"></script>
 
   <script src="js/common/excanvas.min.js"></script>
   <script src="js/common/jquery.min.js"></script>
+
+  <!-- <script src="js/common/masonry.pkgd.min.js"></script> -->
+  
   <script src="js/common/jquery.ui.custom.js"></script>
   <script src="js/common/bootstrap.min.js"></script>
   <script src="js/common/jquery.flot.min.js"></script>

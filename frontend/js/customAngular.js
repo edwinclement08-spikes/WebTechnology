@@ -1,4 +1,4 @@
-var app = angular.module('squid', []);
+var app = angular.module('squid', ['wu.masonry']);
 
 app.controller("pageCTL", function()    {
     this.subPages = [
