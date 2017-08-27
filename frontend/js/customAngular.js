@@ -14,6 +14,7 @@ app.controller("pageCTL", function()    {
 app.controller("workspaceCTL", function () {
     this.temp = "Testing workspace controller";         // *REMOVE*
 
+    
 }
 );
 
