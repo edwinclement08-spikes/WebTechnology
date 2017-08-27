@@ -1,3 +1,4 @@
 debug.log
-
 *.lnk
+
+node_modules/
