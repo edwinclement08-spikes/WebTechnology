@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "bash ./build.sh"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
