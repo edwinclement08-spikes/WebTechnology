@@ -275,6 +275,45 @@ app.controller("postCTL", function(){
       ]
    
 });
+
+app.controller("newsCTL", function(){
+   
+   this.data=[
+      
+      {
+         "subject":"sasfafdhdajgsda",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "date":"20",
+         "month":"Jan"
+      },
+      
+      {
+         "subject":"Thank uoy for the help angular",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "date":"19",
+         "month":"Feb"
+      },
+      
+      {
+         "subject":"express here we cme",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "date":"15",
+         "month":"Dec"
+      },
+      
+      {
+         "subject":"I love you jins@!!",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "date":"21",
+         "month":"May"
+      }
+        
+      
+   ]
+   
+});
+
+
 app.filter('trusted',
 function($sce) {
     return function(ss) {
