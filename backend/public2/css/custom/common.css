@@ -1,0 +1,12 @@
+#trending-mainBox .widget-content .row-fluid [class*="span4"] {
+    margin-left: 15px !important;
+}
+
+#trending-mainBox .widget-content .row-fluid [class*="span4"]  {
+    margin-left: 15px !important;
+}
+
+#home-tabBox > div.widget-content.tab-content > .active [class*="span4"]  {
+    margin-left: 15px !important;
+    
+}

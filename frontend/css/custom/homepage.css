@@ -6,3 +6,10 @@
     padding:0px
     
 }
+
+body {
+    font-size: 1.1rem;
+}
+#user-nav > ul > li > a, #search > input[type="text"] {
+    font-size: 1.1rem;
+}
