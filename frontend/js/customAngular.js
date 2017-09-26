@@ -253,6 +253,28 @@ app.controller("trendingCTL", function () {
     
 });
 
+app.controller("postCTL", function(){
+   
+   this.posts = [
+      {
+        "name":"Anish",
+        "date":"5/8/2017",
+        "content": "Asadasdasdasdfa"   
+      },
+      
+      {
+        "name":"Edwin",
+        "date":"6/8/2017",
+        "content": "Asadasdasdasdfa"   
+      },
+      {
+        "name":"Susan",
+        "date":"5/8/2017",
+        "content": "Asadasdasdasdfa"   
+      },   
+      ]
+   
+});
 app.filter('trusted',
 function($sce) {
     return function(ss) {
