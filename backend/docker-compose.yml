@@ -9,6 +9,6 @@ services:
   mongo:
     image: mongo
     volumes:
-      - ./database:/data/db
+      - ../../WTDatabase:/data/db
     ports:
       - "27017:27017"
