@@ -13,3 +13,8 @@ body {
 #user-nav > ul > li > a, #search > input[type="text"] {
     font-size: 1.1rem;
 }
+
+.navbar-text-ed, #sidebar > ul > li > a > span  {
+    color: #76F656;
+}
+
