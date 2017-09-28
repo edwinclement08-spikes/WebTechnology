@@ -39,19 +39,37 @@
       margin: auto;
     }
   </style>
-
+      
   <div id="header">
     <img src="img/squid-logo2.png">
   </div>
   <!--close-Header-part-->
-
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Modal Header</h2>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the Modal Body</p>
+          <p>Some other text...</p>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+    
+    </div>
   <div id="pageController" ng-controller="pageCTL as page">
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse">
       <ul class="nav">
         <li class="dropdown" id="profile-messages"><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text navbar-text-ed">Welcome User</span><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+            <li><a href="#"><i  class="icon-user"></i> My Profile</a></li> 
             <li class="divider"></li>
             <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
             <li class="divider"></li>
@@ -215,11 +233,14 @@
 
   <script src="js/common/angular.min.js"></script>
   <script src="js/common/angular-masonry.min.js"></script>
-  <script src="js/customAngular.js"></script>
+  
 
   <script src="js/common/excanvas.min.js"></script>
   <script src="js/common/jquery.min.js"></script>
 
+  <script src="js/profile.js"></script> 
+  <script src="js/customAngular.js"></script>
+  
   <!-- <script src="js/common/masonry.pkgd.min.js"></script> -->
 
   <script src="js/common/jquery.ui.custom.js"></script>
