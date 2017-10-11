@@ -11,32 +11,36 @@
         <link rel="stylesheet" href="css/custom/register.css" />
         <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+      
+        <script src="js/common/jquery.min.js"></script>  
+        <script src="js/register.js"></script>
+        <script src="js/common/angular.min.js"></script>
+        <script src="js/angularlogin.js"></script> 
 
     </head>
     <body ng-app="MyApp">
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="index.html" name="loginForm" onsubmit="return validateform()">
+            <form id="loginform" class="form-vertical" action="index.html" name="loginForm" ng-submit="loginForm.$valid" novalidate>
 				 <div class="control-group normal_text"> <h3>    <img src="img/squid-logo2.png">
                  </h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="username" placeholder="Username"/>
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input  ng-model="loginForm.name" type="email" name="username" placeholder="Username" required/>
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="password" placeholder="Password"/>
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input  ng-model="loginForm.password" type="password" name="password" placeholder="Password" required/>
                         </div>
                     </div>
                 </div>
-
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info to-recover" id="to-recover">Lost password?</a></span>
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info to-register" id="to-register">Register</a></span>
-                    <span class="pull-right"><a type="submit" class="btn btn-success" /> Login</a></span>
+                    <span class="pull-right"><input type="submit" value="Login" class="btn btn-success" ></span>
                 </div>
             </form>
             <form id="recoverform" action="#" class="form-vertical">
@@ -104,9 +108,6 @@
                 
             }
         </script>
-        
-        <script src="js/common/jquery.min.js"></script>  
-        <script src="js/register.js"></script> 
-
+  
     </body>
 </html>
