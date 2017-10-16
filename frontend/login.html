@@ -33,64 +33,64 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input  ng-model="loginForm.password" type="password" name="password" placeholder="Password" required/>
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input  type="password" name="password" placeholder="Password" required/>
                         </div>
                     </div>
                 </div>
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info to-recover" id="to-recover">Lost password?</a></span>
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info to-register" id="to-register">Register</a></span>
-                    <span class="pull-right"><input type="submit" value="Login" class="btn btn-success" ></span>
+                    <span class="pull-right"><input type="submit" ng-class="{{active:loginForm.$valid}}" value="Login" class=" btn-success" ></span>
                 </div>
             </form>
-            <form id="recoverform" action="#" class="form-vertical">
+            <form id="recoverform" action="#" class="form-vertical" name="recoverForm" ng-submit="recoverForm.$valid" novalidate>
 				<p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
 				
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="recoverForm.id" type="email" name="email" placeholder="E-mail address" required />
                         </div>
                     </div>
                
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-success to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><a class="btn btn-info"/>Recover</a></span>
+                    <span class="pull-right"><input type="submit" value="Recover" class="btn btn-info"/></span>
                 </div>
             </form>
-            <form id="registerform" action="index.html" class="form-vertical">
+            <form id="registerform" action="index.html" class="form-vertical" name="registerForm" ng-submit="registerForm.$valid" novalidate>
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" placeholder="First Name" />
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="registerForm.fname" type="text" name="firstName" placeholder="First Name" required/>
                         </div>
                     </div>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" placeholder="Last Name" />
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="registerForm.lname" type="text" name="lastName" placeholder="Last Name" required/>
                         </div>
-                    </div>
+                    </div> 
                     
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="registerForm.id" type="email" name="email" placeholder="E-mail address" required/>
                         </div>
                     </div>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="text" placeholder="Password" />
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input ng-model="registerForm.pass" name="password" type="password" placeholder="Password" required/>
                         </div>
                     </div>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="text" placeholder="Confirm Password" />
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input ng-model="registerForm.passcon" type="text" name="confirm" placeholder="Confirm Password" required/>
                         </div>
                     </div>
 
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-success to-login" id="to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><a class="btn btn-info"/>Create account</a></span>
+                    <span class="pull-right"><input type="submit" value="Create Account" class="btn btn-info"/></span>
                 </div>
             </form>
         </div>

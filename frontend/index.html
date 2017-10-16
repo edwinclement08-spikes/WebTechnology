@@ -81,61 +81,13 @@
     cursor: pointer;
 }
 </style>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    
-      <!-- Modal content -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <h2>Modal Header</h2>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
-        </div>
-        <div class="modal-footer">
-          <h3>Modal Footer</h3>
-        </div>
-      </div>
-</div>
-
-<script>
-  // Get the modal
-  var modal = document.getElementById('myModal');
-  
-  // Get the button that opens the modal
-  var btn = document.getElementById("btn");
-  
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  
-  // When the user clicks the button, open the modal 
-  btn.onclick = function() {
-      modal.style.display = "block";
-  }
-  
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-      modal.style.display = "none";
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
   <div id="pageController" ng-controller="pageCTL as page">
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse">
       <ul class="nav">
         <li class="dropdown" id="profile-messages"><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text navbar-text-ed">Welcome User</span><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#" id="btn"><i  class="icon-user"></i> My Profile</a></li> 
-            <li class="divider"></li>
-            <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
+            <li><a href="#" id="btn" ng-click="page.currentSubPage='My Profile'"><i  class="icon-user"></i> My Profile</a></li> 
             <li class="divider"></li>
             <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
           </ul>
@@ -186,6 +138,18 @@
         <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>Prototype v1</a></div>
       </div>
       <!--End-breadcrumbs-->
+
+      <div>
+          <div ng-show="page.currentSubPage == 'My Profile'">
+              <div class="row-fluid">
+                <div class="span12" style="margin:5% 50%">
+                  <b>First Name:</b><br><br>
+                  <b>Last Name:</b><br><br>
+                  <b>Username:</b><br>
+                </div>
+              </div>
+          </div>
+      </div>
 
       <div>
         <div ng-show="page.currentSubPage == 'Home'">
