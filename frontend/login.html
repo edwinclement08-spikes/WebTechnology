@@ -20,7 +20,7 @@
     </head>
     <body ng-app="MyApp">
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="index.html" name="loginForm" ng-submit="loginForm.$valid" novalidate>
+            <form id="loginform" class="form-vertical" name="loginForm" ng-submit="loginForm.$valid" novalidate>
 				 <div class="control-group normal_text"> <h3>    <img src="img/squid-logo2.png">
                  </h3></div>
                 <div class="control-group">
@@ -43,7 +43,7 @@
                     <span class="pull-right"><input type="submit" ng-class="{{active:loginForm.$valid}}" value="Login" class=" btn-success" ></span>
                 </div>
             </form>
-            <form id="recoverform" action="#" class="form-vertical" name="recoverForm" ng-submit="recoverForm.$valid" novalidate>
+            <form id="recoverform" class="form-vertical" name="recoverForm" ng-submit="recoverForm.$valid" novalidate>
 				<p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
 				
                     <div class="controls">
@@ -57,7 +57,7 @@
                     <span class="pull-right"><input type="submit" value="Recover" class="btn btn-info"/></span>
                 </div>
             </form>
-            <form id="registerform" action="index.html" class="form-vertical" name="registerForm" ng-submit="registerForm.$valid" novalidate>
+            <form id="registerform"  class="form-vertical" name="registerForm" ng-submit="registerForm.$valid" novalidate>
                     <div class="controls">
                         <div class="main_input_box">
                             <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="registerForm.fname" type="text" name="firstName" placeholder="First Name" required/>
