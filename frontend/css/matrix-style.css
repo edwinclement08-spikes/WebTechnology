@@ -66,14 +66,20 @@ hr{ border-top-color:#dadada;}
 	display: block;
 }
 /* Search input */
-#search {
+#right-nav-div {
 	position: absolute;
 	z-index: 25;
-	top: 6px;
+	top: 0px;
 	right:10px;
+}
+#search {
+	position: relative;
+	display: inline;
+	top:5px;
 }
 #search input[type=text] {
 	padding: 4px 10px 5px;
+	/*margin-top: 6px;*/
 	border: 0;
 	width: 100px;
 }
