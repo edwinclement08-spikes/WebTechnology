@@ -6,7 +6,7 @@ var client = mongodb.MongoClient;
 var uri = "mongodb://mongo/WT2";
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
+router.get('/home1', function(req, res, next) {
   res.render('home', { title: 'Express' });
 });
 

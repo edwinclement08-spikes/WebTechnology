@@ -1,3 +1,22 @@
 #to-register {
     margin-left: 5px;
 }
+
+.ouath-section	{
+	color: white;
+}
+
+#registerform	.controls {
+	/*margin-top: 1rem;*/
+
+}
+
+.warning-flash-place	{
+	height: 2rem;
+	color: white;
+	text-align: center;
+}
+
+.passwordbox	{
+	width:65% !important;
+}
