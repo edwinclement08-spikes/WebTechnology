@@ -20,3 +20,34 @@
 .passwordbox	{
 	width:65% !important;
 }
+
+.alert-box	{
+    margin: auto;
+    width: 80%;
+    height:3rem;
+}
+
+.logo-text	{
+	padding-bottom: 0px !important;
+}
+
+#registerform, #recoverform , #loginform	{
+	display: block !important;
+}
+
+.form-show {
+  /*display: block !important;*/
+  visibility: visible;
+  opacity: 1;
+  height: initial;
+  transition: opacity 1s linear;
+}
+
+
+.form-hide {
+	/*display: none !important;*/
+  visibility: hidden;
+  opacity: 0;
+  height: 0px;
+/*  transition: visibility 0s 2s, opacity 2s linear;*/
+}

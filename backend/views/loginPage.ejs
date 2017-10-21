@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="css/matrix-login.css" />
-    <link rel="stylesheet" href="css/custom/login.css" />
-    <link rel="stylesheet" href="css/custom/register.css" />
+    
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -19,20 +18,22 @@
     <script src="js/common/jquery.min.js"></script>  
     <script src="js/register.js"></script>
     <script src="js/common/angular.min.js"></script>
-    <!-- This causes a text placeholder to appear in th password for some reason -->
+
     <script src="js/angularlogin.js"></script> 
+
+    <link rel="stylesheet" href="css/custom/login.css" />
 
 </head>
 <body ng-app="MyApp">
-    <div id="loginbox">            
-        <form id="loginform" class="form-vertical" ng-controller="loginFormCTL as login" name="loginForm" ng-submit="loginForm.$valid && submitData(user)" novalidate>
+    <div id="loginbox" ng-controller="MasterController as master" ng-init="formType='<%=formType%>'">             
+        <form id="loginform" class="form-vertical" ng-controller="loginFormCTL as login" action="/login" method="POST" name="loginForm" ng-submit="loginForm.$valid && submitData(user)" novalidate ng-class="{'form-show': $parent.formType=='login', 'form-hide': $parent.formType !='login'}">
 
-            <div class="control-group normal_text"> <h3> <img src="img/squid-logo2.png">
+            <div class="control-group normal_text logo-text"> <h3> <img src="img/squid-logo2.png">
             </h3></div>
 
 
 
-            <div class="warning-flash-place">
+            <div class="warning-flash-place alert-box">
                  <% if (message.length > 0) { %>
                  <div class="alert alert-danger"><%= message %></div>
                  <%}%>                 
@@ -75,11 +76,9 @@
 
 
             <div class="form-actions">
-                <span class="pull-left"><a href="#" class="flip-link btn btn-info to-recover" id="to-recover">Lost password?</a></span>
-                <span class="pull-left"><a href="#" class="flip-link btn btn-info to-register" id="to-register">Register</a></span>
+                <span class="pull-left"><a href="#" ng-click="$parent.formType='recover'" class="flip-link btn btn-info to-recover" id="to-recover">Lost password?</a></span>
+                <span class="pull-left"><a href="#" ng-click="$parent.formType='register'" class="flip-link btn btn-info to-register" id="to-register">Register</a></span>
                 <span class="pull-right"><input ng-disabled="loginForm.$invalid" ng-class="{'btn-success':loginForm.$valid == true,'btn-warning':loginForm.$valid == false }" type="submit"  value="Login" class="btn" ></span>
-
-                {{output}}
             </div>
 
             <div align=center>
@@ -92,93 +91,93 @@
 
             </div>
         </form>
-    <form id="recoverform" class="form-vertical" ng-controller="RecoverFormCTL as recover"  name="recoverForm" ng-submit="recoverForm.$valid && submitData(user)" novalidate>
-        <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+        <form id="recoverform" class="form-vertical" ng-controller="RecoverFormCTL as recover"  name="recoverForm" ng-submit="recoverForm.$valid && submitData(user)" novalidate  ng-class="{'form-show': $parent.formType=='recover', 'form-hide': $parent.formType !='recover'}">
+            <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
 
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="user.email" type="email" name="email" placeholder="E-mail address" required />
-            </div>
-            <div class="warning-flash-place">
-                <span ng-show="recoverForm.email.$error.required">
-                    Required Field
-                </span>
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="user.email" type="email" name="email" placeholder="E-mail address" required />
+                </div>
+                <div class="warning-flash-place">
+                    <span ng-show="recoverForm.email.$error.required">
+                        Required Field
+                    </span>
 
-                <span ng-show="recoverForm.email.$error.email && !recoverForm.email.$error.required">
-                    Enter a valid Email
-                </span>
-                
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-success to-login">&laquo; Back to login</a></span>
-            <span class="pull-right"><input type="submit" value="Recover" class="btn "  ng-disabled="recoverForm.$invalid" ng-class="{'btn-info':recoverForm.$valid == true,'btn-warning':recoverForm.$valid == false }" /></span>
-        </div>
-    </form>
-    <form id="registerform"  class="form-vertical" name="registerForm" ng-controller="RegisterFormCTL as register" ng-submit="registerForm.$valid" novalidate>
-        <h2 class="normal_text" style="font-size: 31.5px;">Register</h2>
-
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="user.firstName" type="text" name="firstName" placeholder="First Name" required/>
-            </div>
-            <div class="warning-flash-place">
-                <span ng-show="registerForm.firstName.$error.required">
-                    Required Field
-                </span>                
-            </div>
-        </div>
-
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="user.lastName" type="text" name="lastName" placeholder="Last Name" required/>
-            </div>
-            <div class="warning-flash-place">
-                <span ng-show="registerForm.lastName.$error.required">
-                    Required Field
-                </span>
-            </div>
-        </div> 
-
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="user.email" type="email" name="email" placeholder="E-mail address" required/>
-            </div>
-            <div class="warning-flash-place">
-                <span ng-show="registerForm.email.$error.required">
-                    Required Field
-                </span>
-
-                <span ng-show="registerForm.email.$error.email && !registerForm.email.$error.required">
-                    Enter a valid Email
-                </span>
-                
-            </div>
-        </div>
-
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_ly"><i class="icon-lock"></i></span><input id="register-password-input" ng-model="user.pass" name="password" type="password" placeholder="Password"  ng-minlength="8" class="passwordbox" required/><span class="add-on bg_lh" ng-click="toggleType()"><i ng-class="{'icon-eye-close':passwordFieldType=='password', 'icon-eye-open':passwordFieldType=='text'}" ></i></span>
+                    <span ng-show="recoverForm.email.$error.email && !recoverForm.email.$error.required">
+                        Enter a valid Email
+                    </span>
+                    
+                </div>
             </div>
 
-            <div class="warning-flash-place">
-                <span ng-show="registerForm.password.$error.required">
-                    Required Field
-                </span>
-                <span ng-show="registerForm.password.$error.minlength && !registerForm.firstName.$error.required">
-                    Password should be at least 8 characters
-                </span>
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" ng-click="$parent.formType='login'"  class="flip-link btn btn-success to-login">&laquo; Back to login</a></span>
+                <span class="pull-right"><input type="submit" value="Recover" class="btn "  ng-disabled="recoverForm.$invalid" ng-class="{'btn-info':recoverForm.$valid == true,'btn-warning':recoverForm.$valid == false }" /></span>
             </div>
-        </div>
+        </form>
+        <form id="registerform"  class="form-vertical" name="registerForm" ng-controller="RegisterFormCTL as register" ng-submit="registerForm.$valid" novalidate ng-class="{'form-show': $parent.formType=='register', 'form-hide': $parent.formType !='register'}">
+            <h2 class="normal_text" style="font-size: 31.5px;">Register</h2>
 
-        <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-success to-login" id="to-login">&laquo; Back to login</a></span>
-            <span class="pull-right"><input type="submit" value="Create Account" class="btn btn-info"/></span>
-        </div>
-    </form>
-</div>
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="user.firstName" type="text" name="firstName" placeholder="First Name" required/>
+                </div>
+                <div class="warning-flash-place">
+                    <span ng-show="registerForm.firstName.$error.required">
+                        Required Field
+                    </span>                
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="user.lastName" type="text" name="lastName" placeholder="Last Name" required/>
+                </div>
+                <div class="warning-flash-place">
+                    <span ng-show="registerForm.lastName.$error.required">
+                        Required Field
+                    </span>
+                </div>
+            </div> 
+
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input ng-model="user.email" type="email" name="email" placeholder="E-mail address" required/>
+                </div>
+                <div class="warning-flash-place">
+                    <span ng-show="registerForm.email.$error.required">
+                        Required Field
+                    </span>
+
+                    <span ng-show="registerForm.email.$error.email && !registerForm.email.$error.required">
+                        Enter a valid Email
+                    </span>
+                    
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input id="register-password-input" ng-model="user.pass" name="password" type="password" placeholder="Password"  ng-minlength="8" class="passwordbox" required/><span class="add-on bg_lh" ng-click="toggleType()"><i ng-class="{'icon-eye-close':passwordFieldType=='password', 'icon-eye-open':passwordFieldType=='text'}" ></i></span>
+                </div>
+
+                <div class="warning-flash-place">
+                    <span ng-show="registerForm.password.$error.required">
+                        Required Field
+                    </span>
+                    <span ng-show="registerForm.password.$error.minlength && !registerForm.firstName.$error.required">
+                        Password should be at least 8 characters
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <span class="pull-left"><a href="#" ng-click="$parent.formType='login'"  class="flip-link btn btn-success to-login" id="to-login">&laquo; Back to login</a></span>
+                <span class="pull-right"><input type="submit" value="Create Account" class="btn btn-info"/></span>
+            </div>
+        </form>
+    </div>
 
 
-</body>
+    </body>
 </html>
