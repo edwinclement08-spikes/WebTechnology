@@ -5,6 +5,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+var passportDebug = require('debug')('passport')
 
 // load up the user model
 var User            = require('../app/models/user');
@@ -14,7 +15,7 @@ var configAuth = require('./auth');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
-
+    console.log("temmp0698670");
     // =========================================================================
     // passport session setup ==================================================
     // =========================================================================
@@ -65,8 +66,14 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('signupMessage', 'That email is already taken.'));    
                 } else {
                     // set the user's local credentials
-                    user.local.email    = email;
-                    user.local.password = user.generateHash(password);
+                    user.local.email        = email;
+                    user.local.firstName    = req.body.firstName
+                    user.local.lastName     = req.body.firstName
+                    user.name               = user.local.firstName  + user.local.lastName  ;
+                    passportDebug(req);
+                    console.log(req);
+                    console.log("edwnfsfion");
+                    user.local.password     = user.generateHash(password);
                      // save the user
                     user.save(function(err) {
                         if (err)

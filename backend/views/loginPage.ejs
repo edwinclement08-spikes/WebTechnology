@@ -56,9 +56,6 @@
             </div>
 
 
-
-
-
             <div class="controls">
                 <div class="main_input_box">
                     <span class="add-on bg_ly"><i class="icon-lock"></i></span><input  ng-model="user.password" type="password" name="password" placeholder="Password" required/>
@@ -69,8 +66,6 @@
                 <span ng-show="loginForm.password.$error.required">
                     Required Field
                 </span>
-
-
 
             </div>
 
@@ -115,9 +110,15 @@
                 <span class="pull-right"><input type="submit" value="Recover" class="btn "  ng-disabled="recoverForm.$invalid" ng-class="{'btn-info':recoverForm.$valid == true,'btn-warning':recoverForm.$valid == false }" /></span>
             </div>
         </form>
-        <form id="registerform"  class="form-vertical" name="registerForm" ng-controller="RegisterFormCTL as register" ng-submit="registerForm.$valid" novalidate ng-class="{'form-show': $parent.formType=='register', 'form-hide': $parent.formType !='register'}">
+        <form id="registerform"  class="form-vertical" name="registerForm" action="/signup" method="POST" ng-controller="RegisterFormCTL as register" ng-submit="registerForm.$valid" novalidate ng-class="{'form-show': $parent.formType=='register', 'form-hide': $parent.formType !='register'}">
             <h2 class="normal_text" style="font-size: 31.5px;">Register</h2>
 
+            <div class="warning-flash-place alert-box">
+              <!-- show any messages that come back with authentication -->
+                <% if (message.length > 0) { %>
+                    <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+            </div>
             <div class="controls">
                 <div class="main_input_box">
                     <span class="add-on bg_lg"><i class="icon-user"></i></span><input ng-model="user.firstName" type="text" name="firstName" placeholder="First Name" required/>
@@ -173,7 +174,7 @@
 
             <div class="form-actions">
                 <span class="pull-left"><a href="#" ng-click="$parent.formType='login'"  class="flip-link btn btn-success to-login" id="to-login">&laquo; Back to login</a></span>
-                <span class="pull-right"><input type="submit" value="Create Account" class="btn btn-info"/></span>
+                <span class="pull-right"><input ng-disabled="registerForm.$invalid" ng-class="{'btn-success':registerForm.$valid == true,'btn-warning':registerForm.$valid == false }" type="submit" value="Create Account" class="btn btn-info"/></span>
             </div>
         </form>
     </div>

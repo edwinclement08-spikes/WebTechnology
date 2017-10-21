@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 
 var mongoose = require('mongoose');
+mongoose.Promise = Promise;
+
 var passport = require('passport');
 var flash    = require('connect-flash');
 
@@ -18,7 +20,10 @@ var session = require('express-session');
 
 // configuration ===============================================================
 var configDB = require('./config/database.js');
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(configDB.url, {
+  useMongoClient: true,
+  /* other options */
+}); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -80,3 +85,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+console.log("temp123");

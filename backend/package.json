@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "DEBUG=passport nodemon  --inspect ./bin/www",
     "test": "docker-compose up --build"
   },
   "dependencies": {

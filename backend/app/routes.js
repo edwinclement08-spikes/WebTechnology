@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
     // =====================================
     app.get('/', function(req, res) {
 
-        res.render('index.ejs'); // load the index.ejs file
+        res.redirect('/home');  
     });
 
     // =====================================
@@ -56,13 +56,13 @@ module.exports = function(app, passport) {
     // show the signup form
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
+        res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType:"register"  });
     });
 
     // process the signup form
     // app.post('/signup', do all our passport stuff here);
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/home', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -91,7 +91,7 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
 
         req.logout();
-        res.redirect('/');
+        res.redirect('/home');
     });
 
     // =====================================
@@ -103,8 +103,8 @@ module.exports = function(app, passport) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect : '/home',
+            failureRedirect : '/login'
         }));
 
     // =====================================
@@ -118,8 +118,8 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect : '/home',
+            failureRedirect : '/login'
         }));
 
     // =============================================================================
@@ -132,7 +132,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/connect/local', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/home', // redirect to the secure profile section
             failureRedirect : '/connect/local', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -144,8 +144,8 @@ module.exports = function(app, passport) {
     // handle the callback after facebook has authorized the user
     app.get('/connect/facebook/callback',
         passport.authorize('facebook', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect : '/home',
+            failureRedirect : '/login'
         }));
 
     // google ---------------------------------
@@ -155,8 +155,8 @@ module.exports = function(app, passport) {
     // the callback after google has authorized the user
     app.get('/connect/google/callback',
         passport.authorize('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect : '/home',
+            failureRedirect : '/login'
         }));
 
     // =============================================================================
@@ -172,7 +172,7 @@ module.exports = function(app, passport) {
         user.local.email    = undefined;
         user.local.password = undefined;
         user.save(function(err) {
-            res.redirect('/profile');
+            res.redirect('/home');
         });
     });
 
@@ -181,7 +181,7 @@ module.exports = function(app, passport) {
         var user            = req.user;
         user.facebook.token = undefined;
         user.save(function(err) {
-            res.redirect('/profile');
+            res.redirect('/home');
         });
     });
 
@@ -191,7 +191,7 @@ module.exports = function(app, passport) {
         var user          = req.user;
         user.google.token = undefined;
         user.save(function(err) {
-           res.redirect('/profile');
+           res.redirect('/home');
         });
     });
 };
