@@ -70,11 +70,15 @@ module.exports = function(passport) {
                     user.local.firstName    = req.body.firstName
                     user.local.lastName     = req.body.firstName
                     user.name               = user.local.firstName  + user.local.lastName  ;
-                    passportDebug(req);
-                    console.log(req);
-                    console.log("edwnfsfion");
+                    
                     user.local.password     = user.generateHash(password);
-                     // save the user
+
+                    passportDebug("test");
+                    user.local.firstName    = req.body.firstName;
+                    user.local.lastName     = req.body.lastName;
+                    user.name               = user.local.firstName + " " + user.local.lastName;
+
+                    // save the user
                     user.save(function(err) {
                         if (err)
                             throw err;
@@ -86,12 +90,20 @@ module.exports = function(passport) {
 
                 // if there is no user with that email
                 // create the user
-                var newUser            = new User();
+                var newUser             = new User();
 
                 // set the user's local credentials
-                newUser.local.email    = email;
-                newUser.local.password = newUser.generateHash(password);
-
+                newUser.local.email     = email;
+                newUser.local.password  = newUser.generateHash(password);
+                
+                
+                passportDebug("test");
+                newUser.local.firstName = req.body.firstName;
+                newUser.local.lastName  = req.body.lastName;
+                
+                newUser.local.password  = newUser.generateHash(password);
+                newUser.name            = newUser.local.firstName + " " + newUser.local.lastName;
+                
                 // set the users email
                 newUser.email = email;
 
