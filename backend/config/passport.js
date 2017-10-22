@@ -200,7 +200,7 @@ module.exports = function(passport) {
                         if (!user.facebook.token) {
                             user.facebook.token = token;
                             user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
-                            
+                            user.name           = user.facebook.name; 
                             if (profile.emails) {
                                 user.facebook.email = profile.emails[0].value; 
                                 if(!user.email) {
@@ -226,7 +226,7 @@ module.exports = function(passport) {
                         newUser.facebook.id    = profile.id; // set the users facebook id                   
                         newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                        
+                        newUser.name           = newUser.facebook.name;
                         if (profile.emails) {
                             newUser.facebook.email = profile.emails[0].value; 
                             if(!newUser.email) {
@@ -304,10 +304,12 @@ module.exports = function(passport) {
                         // if there is a user id already but no token (user was linked at one point and then removed)
                         // just add our token and profile information
                         if (!user.google.token) {
-                            user.google.id    = profile.id;
-                            user.google.token = token;
-                            user.google.name  = profile.displayName;
-                            user.google.email = profile.emails[0].value; // pull the first email
+                            user.google.id      = profile.id;
+                            user.google.token   = token;
+                            user.google.name    = profile.displayName;
+                            user.google.email   = profile.emails[0].value; // pull the first email
+
+                            user.name           = user.google.name; 
 
                             if(!user.email) {
                                 user.email = user.google.email;
@@ -332,8 +334,10 @@ module.exports = function(passport) {
                         newUser.google.name  = profile.displayName;
                         newUser.google.email = profile.emails[0].value; // pull the first email
 
-                        if(!user.email) {
-                            user.email = user.google.email;
+                        newUser.name         = newUser.google.name; 
+
+                        if(!newUser.email) {
+                            newUser.email = newUser.google.email;
                         }
                         // save the user
                         newUser.save(function(err) {
