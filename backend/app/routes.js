@@ -1,7 +1,9 @@
 // app/routes.js
 
-var Post            = require('../app/models/posts');
+var Post = require('../app/models/posts');
 
+var request = require('request');
+var querystring = require('querystring');
 
 module.exports = function (app, passport) {
 
@@ -59,17 +61,68 @@ module.exports = function (app, passport) {
     // =====================================
     // show the signup form
     app.get('/signup', function (req, res) {
-        // render the page and pass in any flash data if it exists
+
         res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "register" });
     });
 
+
+
     // process the signup form
     // app.post('/signup', do all our passport stuff here);
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/home', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
+    app.post('/signup', function (req, res) {
+        // g-recaptcha-response is the key that browser will generate upon form submit.
+        // if its blank or null means user has not selected the captcha, so return the error.
+        if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+            req.flash('signupMessage', "Failed captcha verification");
+            res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "register" });
+
+        } else {
+            var ip = (req.headers['x-forwarded-for'] && req.headers['x-forwarded-for'].split(',').pop()) ||
+                req.connection.remoteAddress ||
+                req.socket.remoteAddress ||
+                req.connection.socket.remoteAddress
+
+
+            var form = {
+                secret: '6LdOiTUUAAAAABbNeGiZnfc9d_kmw_f7uctjbuga',
+                response: req.body['g-recaptcha-response'],
+                remoteip: ip
+            };
+
+            var formData = querystring.stringify(form);
+            var contentLength = formData.length;
+
+            request({
+                headers: {
+                    'Content-Length': contentLength,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                uri: 'https://www.google.com/recaptcha/api/siteverify',
+                body: formData,
+                method: 'POST',
+            }, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+
+                    // Success will be true or false depending upon captcha validation.
+                    if (body.success !== undefined && !body.success) {
+                        req.flash('signupMessage', "Failed captcha verification");
+                        res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "register" });
+                    }
+
+                    // successful recaptcha
+                    passport.authenticate('local-signup', {
+                        successRedirect: '/home', // redirect to the secure profile section
+                        failureRedirect: '/signup', // redirect back to the signup page if there is an error
+                        failureFlash: true // allow flash messages
+                    })(req, res);
+                }
+            }
+            );
+
+        }
+
+        
+    });
 
     // =====================================
     // PROFILE SECTION =====================
@@ -198,11 +251,11 @@ module.exports = function (app, passport) {
             res.redirect('/home');
         });
     });
-    
+
     // POSTS
     // Get profile picture
     app.get('/posts/image/:link', function (req, res, next) {
-        Posts.findOne({'link': req.params[link]}, function(err, post) {
+        Posts.findOne({ 'link': req.params[link] }, function (err, post) {
             if (err) return next(err);
             res.contentType(post.img.contentType);
             res.send(post.img.data);

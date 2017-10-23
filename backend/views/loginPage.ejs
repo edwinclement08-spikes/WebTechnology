@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="css/custom/login.css" />
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body ng-app="MyApp">
     <div id="loginbox" ng-controller="MasterController as master" ng-init="formType='<%=formType%>'">             
@@ -170,6 +171,7 @@
                 </div>
             </div>
 
+            <div class="g-recaptcha" data-sitekey="6LdOiTUUAAAAALShbjK1AsN6zcjiO9-yu1SBH637"></div>
             <div class="form-actions">
                 <span class="pull-left"><a href="#" ng-click="$parent.formType='login'"  class="flip-link btn btn-success to-login" id="to-login">&laquo; Back to login</a></span>
                 <span class="pull-right"><input ng-disabled="registerForm.$invalid" ng-class="{'btn-success':registerForm.$valid == true,'btn-warning':registerForm.$valid == false }" type="submit" value="Create Account" class="btn btn-info"/></span>
