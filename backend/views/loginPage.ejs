@@ -12,9 +12,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-
-
-
     <script src="js/common/jquery.min.js"></script>  
     <script src="js/register.js"></script>
     <script src="js/common/angular.min.js"></script>
@@ -157,9 +154,10 @@
                 </div>
             </div>
 
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input id="register-password-input" ng-model="user.pass" name="password" type="password" placeholder="Password"  ng-minlength="8" class="passwordbox" required/><span class="add-on bg_lh" ng-click="toggleType()"><i ng-class="{'icon-eye-close':passwordFieldType=='password', 'icon-eye-open':passwordFieldType=='text'}" ></i></span>
+            <div class="controls"  >
+                <div class="main_input_box"  id="register-input-parent">
+
+                    <span id="register-password-input-left-span"  class="add-on bg_ly"><i class="icon-lock"></i></span><input id="register-password-input" ng-model="user.pass" name="password" type="password" placeholder="Password"  ng-minlength="8" class="passwordbox" required/><span id="register-password-input-right-span" class="add-on bg_lh" ng-click="toggleType()"><i ng-class="{'icon-eye-close':passwordFieldType=='password', 'icon-eye-open':passwordFieldType=='text'}" ></i></span>
                 </div>
 
                 <div class="warning-flash-place">

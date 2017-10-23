@@ -1,53 +1,87 @@
 #to-register {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .ouath-section	{
-	color: white;
+color: white;
 }
 
 #registerform	.controls {
-	/*margin-top: 1rem;*/
+/*margin-top: 1rem;*/
 
 }
 
 .warning-flash-place	{
-	height: 2rem;
-	color: white;
-	text-align: center;
+height: 2rem;
+color: white;
+text-align: center;
 }
 
 .passwordbox	{
-	width:65% !important;
+
 }
 
 .alert-box	{
-    margin: auto;
-    width: 80%;
-    height:3rem;
+  margin: auto;
+  width: 80%;
+  height:3rem;
 }
 
 .logo-text	{
-	padding-bottom: 0px !important;
+padding-bottom: 0px !important;
 }
 
 #registerform, #recoverform , #loginform	{
-	display: block !important;
+display: block !important;
 }
 
 .form-show {
-  /*display: block !important;*/
-  visibility: visible;
-  opacity: 1;
-  height: initial;
-  transition: opacity 1s linear;
+/*display: block !important;*/
+visibility: visible;
+opacity: 1;
+height: initial;
+transition: opacity 1s linear;
 }
 
 
 .form-hide {
-	/*display: none !important;*/
-  visibility: hidden;
-  opacity: 0;
-  height: 0px;
+/*display: none !important;*/
+visibility: hidden;
+opacity: 0;
+height: 0px;
 /*  transition: visibility 0s 2s, opacity 2s linear;*/
+}
+
+
+#register-password-input-left-span  {
+
+float: left;
+  /* display:inline-block; */
+
+}
+#register-password-input  {
+/* padding-right: 48px; */
+width:65% !important;
+/* display:inline-block; */
+float: left;
+
+}
+#register-password-input-right-span  {
+/* margin-right: -48px; */
+float: left;
+/* display:inline-block;  */
+
+}
+
+
+
+#register-input-parent  {
+padding:0px;
+text-align:center;
+display: table;
+
+display: inline-block;
+width: 100%;
+/* word-break: break-all; */
+
 }
