@@ -13,6 +13,8 @@ var User            = require('../app/models/user');
 // load the auth variables
 var configAuth = require('./auth');
 
+var sanitize = require('mongo-sanitize');
+
 // expose this function to our app using module.exports
 module.exports = function(passport) {
     console.log("temmp0698670");
