@@ -15,7 +15,7 @@ var postSchema = mongoose.Schema({
     img: { data: Buffer, contentType: String },
     
 
-});
+}, {timestamps: true} );
 
 
 // tags will have an array of tags
