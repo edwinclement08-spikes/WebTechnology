@@ -27,115 +27,115 @@ app.controller("articleTabsCTL", function () {
         "Science": [
             {
                 "title":"dsf2ds",
-                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
+                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
                 "link":""
             },
             {
                 "title":"ds323242fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"ds3fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"dsf2ds",
-                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
+                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
                 "link":""
             },
             {
                 "title":"ds323242fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"ds3fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"dsf2ds",
-                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
+                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
                 "link":""
             },
             {
                 "title":"ds323242fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"ds3fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             }  
         ],
         "Fiction": [
             {
                 "title":"Fiction1",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Fiction123",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"ds3fds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             }  
         ],
         "Technology": [
             {
                 "title":"Technology",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Technology1",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Technology34",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             } 
         ],
         "Health": [
             {
                 "title":"dsf2ds",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Health3543",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Health",
-                "content":"HealthHealthHealthHealth",
+                "summary":"HealthHealthHealthHealth",
                 "link":""
             } 
         ],
         "Finance": [
             {
                 "title":"Finance",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             },
             {
                 "title":"Finance345r",
-                "content":"FinanceFinance",
+                "summary":"FinanceFinance",
                 "link":""
             },
             {
                 "title":"Finance5654645",
-                "content":"dsfdfs",
+                "summary":"dsfdfs",
                 "link":""
             } 
         ]
@@ -143,114 +143,121 @@ app.controller("articleTabsCTL", function () {
 });
 
 
-app.controller("trendingCTL", function () {
-    this.articles = [
-            {
-                "title":"dsf2ds",
-                "content":"dsfdsfdsf<br>fgf<b>",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"dsf2ds",
-                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"dsf2ds",
-                "content":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Fiction1",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Fiction123",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Technology",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Technology1",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Technology34",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"dsf2ds",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Health3543",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Health",
-                "content":"HealthHealthHealthHealth",
-                "link":""
-            },
-            {
-                "title":"Finance",
-                "content":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Finance345r",
-                "content":"FinanceFinance",
-                "link":""
-            },
-            {
-                "title":"Finance5654645",
-                "content":"dsfdfs",
-                "link":""
-            } 
-        ]
+app.controller("trendingCTL", function ($scope, $http) {
+    // this.articles = [
+    //         {
+    //             "title":"dsf2ds",
+    //             "summary":"dsfdsfdsf<br>fgf<b>",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds323242fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds3fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"dsf2ds",
+    //             "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds323242fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds3fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"dsf2ds",
+    //             "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds323242fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds3fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Fiction1",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Fiction123",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"ds3fds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Technology",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Technology1",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Technology34",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"dsf2ds",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Health3543",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Health",
+    //             "summary":"HealthHealthHealthHealth",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Finance",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Finance345r",
+    //             "summary":"FinanceFinance",
+    //             "link":""
+    //         },
+    //         {
+    //             "title":"Finance5654645",
+    //             "summary":"dsfdfs",
+    //             "link":""
+    //         } 
+    //     ]
+
+        
+    $http.get("http://localhost/posts-server/latest")
+    .then(function(response) {
+        $scope.articles = response.data;
+        
+    });
     
 });
 
@@ -260,18 +267,18 @@ app.controller("postCTL", function(){
       {
         "name":"Anish",
         "date":"5/8/2017",
-        "content": "Asadasdasdasdfa"   
+        "summary": "Asadasdasdasdfa"   
       },
       
       {
         "name":"Edwin",
         "date":"6/8/2017",
-        "content": "Asadasdasdasdfa"   
+        "summary": "Asadasdasdasdfa"   
       },
       {
         "name":"Susan",
         "date":"5/8/2017",
-        "content": "Asadasdasdasdfa"   
+        "summary": "Asadasdasdasdfa"   
       },   
       ]
    
@@ -283,28 +290,28 @@ app.controller("newsCTL", function(){
       
       {
          "subject":"sasfafdhdajgsda",
-         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"20",
          "month":"Jan"
       },
       
       {
          "subject":"Thank uoy for the help angular",
-         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"19",
          "month":"Feb"
       },
       
       {
          "subject":"express here we cme",
-         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"15",
          "month":"Dec"
       },
       
       {
          "subject":"I love you jins@!!",
-         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"21",
          "month":"May"
       }

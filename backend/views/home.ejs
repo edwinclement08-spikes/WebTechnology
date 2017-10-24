@@ -284,7 +284,7 @@
                   <div id="#tabItem_{{tabItem}}" class="span4" ng-repeat="tabItem in tabContent">
                     <div class="widget-box">
                       <div class="widget-title posts">{{tabItem.title}}</div>
-                      <div class="widget-content tab-content" ng-bind-html="tabItem.content | trusted">
+                      <div class="widget-content tab-content" ng-bind-html="tabItem.summary | trusted">
                       </div>
                     </div>
                   </div>
@@ -340,11 +340,14 @@
               <!-- <div class="widget-title">Trending Articles</div> -->
               <div class="widget-content  tab-content">
                 <div class="row-fluid">
-                  <div class="span4 news-data " ng-repeat="article in trending.articles">
+                  <div class="span4 news-data " ng-repeat="article in articles">
                     <div class="widget-box">
-                      <div class="widget-title posts">{{article.title}}</div>
-                      <div class="widget-content tab-content" ng-bind-html="article.content | trusted">
-                      </div>
+                      <div class="widget-content title">{{article.title}}</div>
+                      <div class="widget-content " ng-bind-html="article.summary | trusted"></div>
+                      <div class="widget-content " >
+                          <img src="{{article.imgUrl}}">
+                        </div>
+                      
                     </div>
                   </div>
                 </div>

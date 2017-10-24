@@ -7,17 +7,13 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var passportDebug = require('debug')('passport')
 
-// load up the user model
-var User            = require('../app/models/user');
+
 
 // load the auth variables
 var configAuth = require('./auth');
 
-var sanitize = require('mongo-sanitize');
-
 // expose this function to our app using module.exports
-module.exports = function(passport) {
-    console.log("temmp0698670");
+module.exports = function(passport, User) {
     // =========================================================================
     // passport session setup ==================================================
     // =========================================================================

@@ -5,12 +5,16 @@ var mongoose = require('mongoose');
 // define the schema for our user model
 var postSchema = mongoose.Schema({
     title           : String,
-    url             : String,
+    summary         : String,
     link            : String,
     adder           : String,
     comments        : [],
     tags            : [],
-    img: { data: Buffer, contentType: String }
+    imgUrl          : String, 
+    sourceUrl       : String, 
+    img: { data: Buffer, contentType: String },
+    
+
 });
 
 
