@@ -147,99 +147,120 @@
 
     <div>
       <div ng-show="page.currentSubPage == 'My Profile'">
-       <!--  <div class="row-fluid">
-          <div class="span12" style="margin:5% 50%">
-            <b>First Name:</b><br><br>
-            <b>Last Name:</b><br><br>
-            <b>Username:</b><br>
+
+
+          <div class="container-fluid">
+              <div class="row-fluid">
+              <div class="span12">
+                <div class="widget-box">
+                  <div class="widget-title">
+                    <span class="icon">
+                      <i class="icon-list-alt"></i>
+                    </span>
+                    <h5>Preferences</h5>
+                  </div>
+                  <div class="widget-content">
+                  </div>
+                </div>
+              </div>
+            <div class="row-fluid">
+              
+              <div class="span12">
+                  <div class="widget-box">
+                    <div class="widget-title">
+                      <span class="icon">
+                        <i class="icon-list-alt"></i>
+                      </span>
+                      <h5>Current User Info</h5>
+                    </div>
+                    <div class="widget-content">
+                      <!-- Check for any logged in user -->
+                          <% if (user) { %>
+            
+                        <!-- LOCAL INFORMATION -->
+                          <div class="well">
+                          <h3><span class="fa fa-user"></span> Local</h3>
+            
+                            <% if (user.local) { %>
+                              <% if (user.local.email) { %>
+                              <p>
+                                <strong>id</strong>: <%= user._id %><br>
+                                <strong>email</strong>: <%= user.local.email %><br>
+                                <strong>password</strong>: <%= user.local.password %>
+                              </p>
+            
+                              <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                              <% } else { %>
+                              <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                              <% } %>
+                            <% } else { %>
+                              No local Login
+                            <% } %>
+            
+            
+                          </div>
+            
+                        <!-- FACEBOOK INFORMATION -->
+                          <div class="well">
+                            <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+            
+                            <% if (user.facebook) { %>
+                              <!-- check if the user has this token (is the user authenticated with this social account) -->
+                              <% if (user.facebook.token) { %>
+                              <p>
+                                <strong>id</strong>: <%= user.facebook.id %><br>
+                                <strong>token</strong>: <%= user.facebook.token %><br>
+                                <strong>email</strong>: <%= user.facebook.email %><br>
+                                <strong>name</strong>: <%= user.facebook.name %><br>
+                              </p>
+            
+                              <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
+                              <% } else { %>
+                              <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+                              <% } %>
+                            <% } else { %>
+                              No Facebook Login
+                            <% } %>
+            
+                          </div>
+                        
+                     
+            
+                        <!-- GOOGLE INFORMATION -->
+                          <div class="well">
+                            <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
+            
+                            <% if (user.google) { %>
+                              <!-- check if the user has this token (is the user authenticated with this social account) -->
+                              <% if (user.google.token) { %>
+                              <p>
+                                <strong>id</strong>: <%= user.google.id %><br>
+                                <strong>token</strong>: <%= user.google.token %><br>
+                                <strong>email</strong>: <%= user.google.email %><br>
+                                <strong>name</strong>: <%= user.google.name %>
+                              </p>
+            
+                              <a href="/unlink/google" class="btn btn-danger">Unlink</a>
+                              <% } else { %>
+                              <a href="/connect/google" class="btn btn-danger">Connect Google</a>
+                              <% } %>
+                            <% } else { %>
+                              No Google Login
+                            <% } %>
+                          </div>
+                        <% } else {%>
+                          No Logged in user
+                        <% } %>
+            
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
-        </div> -->
-        <div class="row-fluid">
+          </div>
+          
 
-          <!-- Check for any logged in user -->
-          <% if (user) { %>
-
-            <!-- LOCAL INFORMATION -->
-            <div class="col-sm-6">
-              <div class="well">
-                         <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.local) { %>
-                  <% if (user.local.email) { %>
-                  <p>
-                    <strong>id</strong>: <%= user._id %><br>
-                    <strong>email</strong>: <%= user.local.email %><br>
-                    <strong>password</strong>: <%= user.local.password %>
-                  </p>
-
-                  <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                  <% } else { %>
-                  <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                  <% } %>
-                <% } else { %>
-                  No local Login
-                <% } %>
-
-
-              </div>
-            </div>
-
-            <!-- FACEBOOK INFORMATION -->
-            <div class="col-sm-6">
-              <div class="well">
-                <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
-
-                <% if (user.facebook) { %>
-                  <!-- check if the user has this token (is the user authenticated with this social account) -->
-                  <% if (user.facebook.token) { %>
-                  <p>
-                    <strong>id</strong>: <%= user.facebook.id %><br>
-                    <strong>token</strong>: <%= user.facebook.token %><br>
-                    <strong>email</strong>: <%= user.facebook.email %><br>
-                    <strong>name</strong>: <%= user.facebook.name %><br>
-                  </p>
-
-                  <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
-                  <% } else { %>
-                  <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
-                  <% } %>
-                <% } else { %>
-                  No Facebook Login
-                <% } %>
-
-              </div>
-            </div>
-         
-
-            <!-- GOOGLE INFORMATION -->
-            <div class="col-sm-6">
-              <div class="well">
-                <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
-
-                <% if (user.google) { %>
-                  <!-- check if the user has this token (is the user authenticated with this social account) -->
-                  <% if (user.google.token) { %>
-                  <p>
-                    <strong>id</strong>: <%= user.google.id %><br>
-                    <strong>token</strong>: <%= user.google.token %><br>
-                    <strong>email</strong>: <%= user.google.email %><br>
-                    <strong>name</strong>: <%= user.google.name %>
-                  </p>
-
-                  <a href="/unlink/google" class="btn btn-danger">Unlink</a>
-                  <% } else { %>
-                  <a href="/connect/google" class="btn btn-danger">Connect Google</a>
-                  <% } %>
-                <% } else { %>
-                  No Google Login
-                <% } %>
-              </div>
-            </div>
-            <% } else {%>
-              No Logged in user
-            <% } %>
-
-        </div>
+        
       </div>
     </div>
 
