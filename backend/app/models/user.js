@@ -7,6 +7,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var userSchema = mongoose.Schema({
     email           : String,
     name            : String,
+    type            : String,
     local            : {
         email        : String,
         password     : String,
@@ -27,6 +28,8 @@ var userSchema = mongoose.Schema({
     }
 
 });
+// User.type  can be 
+//  "adder", "admin", "reader"
 
 // methods ======================
 // generating a hash

@@ -10,3 +10,16 @@
     margin-left: 15px !important;
     
 }
+
+#header img {
+    background-size: contain;
+    /* background: url("../img/squid-logo2.png") no-repeat scroll 0 0 transparent; */
+    height: 31px;
+    left: 10px;
+    line-height: 600px;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+    width: 171px;
+    margin: auto;
+  }
