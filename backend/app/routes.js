@@ -1,9 +1,11 @@
 // app/routes.js
 
 
-var request         = require('request');
-var querystring     = require('querystring');
-var recoveryMailer          = require('../config/mailer')
+var request = require('request');
+var querystring = require('querystring');
+var recoveryMailer = require('../config/mailer')
+var shortid = require('shortid');
+
 
 module.exports = function (app, passport, User) {
 
@@ -100,28 +102,7 @@ module.exports = function (app, passport, User) {
             );
         }
     });
-    // =====================================
-    // RECOVERY ============================
-    // =====================================
-
-    app.post('/recover', function (req, res) {
-        User.findOne({ 'email': req.body.email }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                req.flash('recoverMessage', "Incorrect username");
-                res.render('loginPage.ejs', { message: req.flash('recoverMessage'), formType: "recover" });
-            } else {
-                res.send("Let your will be Done, " + user.name);
-                recoveryMailer(user.email, "localhost/recover-link/42")
-
-            }
-            //return done(null, user);        instead of this line, we send an email
-        })
-    });
-
-    app.get('/recover-link/42', function(req, res) {
-        res.send("You are on the path to recovery.")
-    });
+    
 
     // =====================================
     // PROFILE SECTION =====================
@@ -184,7 +165,7 @@ module.exports = function (app, passport, User) {
 
     // locally --------------------------------
     app.get('/connect/local', function (req, res) {
-        res.render('connect-local.ejs', { message: req.flash('loginMessage') });
+        res.redirect('/signup');
     });
 
     app.post('/connect/local', passport.authenticate('local-signup', {
@@ -251,16 +232,73 @@ module.exports = function (app, passport, User) {
         });
     });
 
-    // // POSTS
-    // // Get profile picture
-    // app.get('/posts/image/:link', function (req, res, next) {
-    //     Posts.findOne({ 'link': req.params[link] }, function (err, post) {
-    //         if (err) return next(err);
-    //         res.contentType(post.img.contentType);
-    //         res.send(post.img.data);
-    //     });
-    // });
-   
+  
+    // =====================================
+    // RECOVERY ============================
+    // =====================================
+    app.get('/recover', function (req, res) {
+        res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "recover" });
+    });
+
+    app.post('/recover', function (req, res) {
+        User.findOne({ 'email': req.body.email }, function (err, user) {
+            if (err) { throw err; }
+            if (!user) {
+                req.flash('recoverMessage', "No such User exists.");
+                res.render('loginPage.ejs', { message: req.flash('recoverMessage'), formType: "recover" });
+            } else {
+                var recoveryId = "recover-link-" + shortid.generate();
+                user.recoveryId = recoveryId;
+                
+                var recoveryLink = "http://localhost/" + recoveryId;
+                user.save(function (err) {
+                    if (err)
+                    throw err;
+                    else {
+                        recoveryMailer(user.email.replace(/\n/, ''), recoveryLink.replace(/\n/, ''))
+                        
+                        req.flash('loginMessage', "Check you Email for the Password Change Link.");
+                        res.render('loginPage.ejs', { message: req.flash('loginMessage'), formType: "login" });
+                    }
+                });
+            }
+        })
+    });
+
+    app.get('/:recoveryid', function (req, res) {
+        User.findOne({ 'recoveryId': req.params.recoveryid }, function (err, user) {
+            if (err) { throw err; }
+            if (!user) {
+                req.flash('loginMessage', "No Such Recovery Token generated.");
+                res.render('loginPage.ejs', { message: req.flash('loginMessage'), formType: "login" });
+            } else {
+                res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "changePass", changePassToken: req.params.recoveryid });
+            }
+        });
+    });
+
+    app.get('/changePass', function (req, res) {
+        res.render('loginPage.ejs', { message: req.flash('signupMessage'), formType: "changePass", changePassToken: "fsfdsdf" });
+    });
+
+    app.post('/changePass', function (req, res) {
+        User.findOne({ 'recoveryId': req.body.changePassToken }, function (err, user) {
+            if (err) { throw err; }
+            if (!user) {
+                req.flash('recoverMessage', "You Shouldn't be there.");
+                res.render('loginPage.ejs', { message: req.flash('recoverMessage'), formType: "login" });
+            } else {
+                user.local.password = user.generateHash(req.body.password);
+                user.recoveryId = "";
+                // save the user
+                user.save(function (err) {
+                    if (err)
+                        throw err;
+                    res.redirect('/login');
+                });
+            }
+        })
+    });
 };
 
 // route middleware to make sure a user is logged in

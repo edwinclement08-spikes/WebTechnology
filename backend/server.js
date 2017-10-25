@@ -41,8 +41,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./config/passport')(passport, User);   // pass passport for configuration
 require('./config/scrapper.js')(app, Post);     
-require('./app/routes.js')(app, passport, User); // load our routes and pass in our app and fully configured passport
 require('./app/routes-posts.js')(app, Post, express.Router()); // load Posts distributer router
+require('./app/routes.js')(app, passport, User); // load our routes and pass in our app and fully configured passport
+// No routes after this point will work
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

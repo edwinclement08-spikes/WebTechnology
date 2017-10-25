@@ -1,4 +1,4 @@
-var app = angular.module('squid', ['wu.masonry']);
+var app = angular.module('squid', [ 'iso.directives']);
 
 app.controller("pageCTL", function()    {
     this.subPages = [
@@ -7,7 +7,7 @@ app.controller("pageCTL", function()    {
         ["You May like this"],
         ["Updates"]
     ];
-    this.currentSubPage = "Home";
+    this.currentSubPage = "Trending";
 });
 
 
@@ -144,114 +144,6 @@ app.controller("articleTabsCTL", function () {
 
 
 app.controller("trendingCTL", function ($scope, $http) {
-    // this.articles = [
-    //         {
-    //             "title":"dsf2ds",
-    //             "summary":"dsfdsfdsf<br>fgf<b>",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds323242fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds3fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"dsf2ds",
-    //             "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds323242fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds3fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"dsf2ds",
-    //             "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds323242fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds3fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Fiction1",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Fiction123",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"ds3fds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Technology",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Technology1",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Technology34",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"dsf2ds",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Health3543",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Health",
-    //             "summary":"HealthHealthHealthHealth",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Finance",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Finance345r",
-    //             "summary":"FinanceFinance",
-    //             "link":""
-    //         },
-    //         {
-    //             "title":"Finance5654645",
-    //             "summary":"dsfdfs",
-    //             "link":""
-    //         } 
-    //     ]
-
         
     $http.get("http://localhost/posts-server/latest")
     .then(function(response) {
@@ -267,18 +159,18 @@ app.controller("postCTL", function(){
       {
         "name":"Anish",
         "date":"5/8/2017",
-        "summary": "Asadasdasdasdfa"   
+        "content": "Asadasdasdasdfa"   
       },
       
       {
         "name":"Edwin",
         "date":"6/8/2017",
-        "summary": "Asadasdasdasdfa"   
+        "content": "Asadasdasdasdfa"   
       },
       {
         "name":"Susan",
         "date":"5/8/2017",
-        "summary": "Asadasdasdasdfa"   
+        "content": "Asadasdasdasdfa"   
       },   
       ]
    
@@ -290,28 +182,28 @@ app.controller("newsCTL", function(){
       
       {
          "subject":"sasfafdhdajgsda",
-         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"20",
          "month":"Jan"
       },
       
       {
          "subject":"Thank uoy for the help angular",
-         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"19",
          "month":"Feb"
       },
       
       {
          "subject":"express here we cme",
-         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"15",
          "month":"Dec"
       },
       
       {
          "subject":"I love you jins@!!",
-         "summary":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
+         "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"21",
          "month":"May"
       }
@@ -327,4 +219,23 @@ function($sce) {
     return function(ss) {
             return $sce.trustAsHtml(ss)
         };
+});
+
+
+app.directive("contentHolder", function() {
+    return {
+        template : function() {
+          var content = [
+            '<a href="{{article.link}}" class="squid-article-box">',
+              '<div class="widget-box">',
+                '<div class="widget-content title">{{article.title}}</div>',
+                '<div class="widget-content " ng-bind-html="article.summary | trusted"></div>',
+                '<div class="widget-content " >',
+                  '<img src="{{article.imgUrl}}">',
+                '</div>',
+              '</div>',
+            '</a>"'].join("");
+          return content;
+        }
+    }
 });

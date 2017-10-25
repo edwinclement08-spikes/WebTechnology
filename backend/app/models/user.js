@@ -8,6 +8,7 @@ var userSchema = mongoose.Schema({
     email           : String,
     name            : String,
     type            : String,
+    recoveryId      : String,
     local            : {
         email        : String,
         password     : String,

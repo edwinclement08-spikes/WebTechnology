@@ -6,11 +6,12 @@ module.exports = []
 // function format should take a parameter, Post schema 
 
 function popoutScrapperFunctions(tag) {
+    let tagState = tag;
+    
     return function ($, Post) {
         url = "http://www.sciencealert.com";
-
+        
         var title, image, link, summary;
-        var json = { title: "", image: "", link: "", summary: "" };
 
         $('div.article-container-height, div.article-container-1-odd').filter(function () {
             var data = $(this).find(".inner");
@@ -32,11 +33,11 @@ function popoutScrapperFunctions(tag) {
             post.summary = summary.replace(/\n/, '');
             post.imgUrl = (url + image).replace(/\n/, '');
             post.sourceUrl = url.replace(/\n/, '');
-            post.tag = [tag];
+            post.tags = [tagState,"Sciencealert"];
 
             Post.findOne({ "link": post.link }, function (err, data) {
                 if (err)
-                    res.send();
+                    throw err;
                 else {
                     if (data) {
                         // Already in the DB and ignore

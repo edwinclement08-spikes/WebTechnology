@@ -18,3 +18,40 @@ body {
     color: #76F656;
 }
 
+.squid-article-box > div {
+    border: 2px #949494 solid;
+    border-radius: 2px;
+    box-shadow: 0px #888888;
+    transition: box-shadow .5s;
+}
+.squid-article-box  div.title   {
+    background: #bdbfca;
+    color: black;
+    border: 0px;
+}
+.squid-article-box  div.subtitle   {
+    color: black;
+    background: #bdbfca;
+    border: 0px;
+}
+.squid-article-box  div.link-image {
+    border: 0px;
+}
+
+.squid-article-box:hover > div  {
+    box-shadow: 10px 10px 5px #888888;
+    transition: box-shadow .5s;
+}
+
+.squid-article-box:hover  div.title   {
+    background: #c1bda9;
+    color: black;
+    border: 0px;
+    transition: background .5s;
+}
+.squid-article-box:hover  div.subtitle   {
+    color: black;
+    background: #c1bda9;
+    border: 0px;
+}
+

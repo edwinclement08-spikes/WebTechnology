@@ -31,7 +31,7 @@ text-align: center;
 padding-bottom: 0px !important;
 }
 
-#registerform, #recoverform , #loginform	{
+#registerform, #recoverform , #loginform, #changePassform	{
 display: block !important;
 }
 
@@ -53,20 +53,18 @@ height: 0px;
 }
 
 
-#register-password-input-left-span  {
-
+#register-password-input-left-span , #changePass-password-input-left-span  {
 float: left;
   /* display:inline-block; */
-
 }
-#register-password-input  {
+#register-password-input, #changePass-password-input  {
 /* padding-right: 48px; */
 width:65% !important;
 /* display:inline-block; */
 float: left;
 
 }
-#register-password-input-right-span  {
+#register-password-input-right-span, #changePass-password-input-right-span  {
 /* margin-right: -48px; */
 float: left;
 /* display:inline-block;  */
@@ -75,7 +73,7 @@ float: left;
 
 
 
-#register-input-parent  {
+#register-input-parent , #changePass-input-parent  {
 padding:0px;
 text-align:center;
 display: table;
