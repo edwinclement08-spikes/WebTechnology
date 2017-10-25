@@ -33,6 +33,10 @@ body {
     color: black;
     background: #bdbfca;
     border: 0px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .squid-article-box  div.link-image {
     border: 0px;
@@ -55,3 +59,7 @@ body {
     border: 0px;
 }
 
+.squid-article-box  .widget-content   {
+    padding: 0px;
+
+}

@@ -278,17 +278,22 @@
                 </ul>
               </div>
               <div class="widget-content tab-content">
+                <div ng-class="{ 'active':(articles.currentTab == '{{tabTitle}}')}" class="tab-pane" ng-repeat="(tabTitle, tabContent) in articles.tabData">
 
-                <div id="#tab_{{tabTitle}}" ng-class="{ 'active':(articles.currentTab == '{{tabTitle}}')}" class="tab-pane" ng-repeat="(tabTitle, tabContent) in articles.tabData">
-
-                  <div id="#tabItem_{{tabItem}}" class="span4" ng-repeat="tabItem in tabContent">
-                    <div class="widget-box">
-                      <div class="widget-title posts">{{tabItem.title}}</div>
-                      <div class="widget-content tab-content" ng-bind-html="tabItem.summary | trusted">
+                  <div class="span4" ng-repeat="article in tabContent">
+                    <a href="{{article.link}}" class="squid-article-box" target="_blank">
+                      <div class="widget-box">
+                        <div class="widget-content title">{{article.title}}</div>
+                        <div class="widget-content link-image">
+                          <img src="{{article.imgUrl}}">
+                        </div>
+                        <div class="widget-content subtitle" ng-bind-html="article.summary | trusted"></div>
+                    
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -339,8 +344,8 @@
             <div class="widget-box" id="trending-mainBox">
               <!-- <div class="widget-title">Trending Articles</div> -->
               <div class="widget-content  tab-content">
-                <div class="row-fluid" id="isotopeContainer" isotope-container="isotope-container">
-                  <div class="span4" ng-repeat="article in articles" isotope-item="isotope-item" >
+                <div class="row-fluid" id="trendingGrid" >
+                  <div class="span4" ng-repeat="article in articles">
                     <a href="{{article.link}}" class="squid-article-box"  target="_blank">
                       <div class="widget-box">
                         <div class="widget-content title">{{article.title}}</div>
@@ -386,8 +391,8 @@
 <script src="js/common/excanvas.min.js"></script>
 <script src="js/common/jquery.min.js"></script>
 
-<script src="js/angular-isotope.min.js"></script>
 <script src="js/customAngular.js"></script>
+<!-- <script src="js/salvattore.js"></script> -->
 
 <!-- <script src="js/angular-masonry.js.js"></script> -->
 

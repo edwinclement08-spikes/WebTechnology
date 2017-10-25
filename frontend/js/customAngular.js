@@ -1,4 +1,4 @@
-var app = angular.module('squid', [ 'iso.directives']);
+var app = angular.module('squid', []);
 
 app.controller("pageCTL", function()    {
     this.subPages = [
@@ -20,126 +20,27 @@ app.controller("workspaceCTL", function () {
 );
 
 
-app.controller("articleTabsCTL", function () {
-    this.currentTab = "Science";
-    this.tabs = ["Science", "Fiction", "Technology", "Health", "Finance"];
+app.controller("articleTabsCTL", function ($scope, $http) {
+
+    this.tabs = ["Technology", "Health", "Environment",  "Space", "Humans","Physics", "Nature" ];
+    this.currentTab = this.tabs[0];
     this.tabData = {
-        "Science": [
-            {
-                "title":"dsf2ds",
-                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"dsf2ds",
-                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"dsf2ds",
-                "summary":"dsfdsfdsffgf<b>rgrdrgdd</b>fs",
-                "link":""
-            },
-            {
-                "title":"ds323242fds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "summary":"dsfdfs",
-                "link":""
-            }  
-        ],
-        "Fiction": [
-            {
-                "title":"Fiction1",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Fiction123",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"ds3fds",
-                "summary":"dsfdfs",
-                "link":""
-            }  
-        ],
-        "Technology": [
-            {
-                "title":"Technology",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Technology1",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Technology34",
-                "summary":"dsfdfs",
-                "link":""
-            } 
-        ],
-        "Health": [
-            {
-                "title":"dsf2ds",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Health3543",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Health",
-                "summary":"HealthHealthHealthHealth",
-                "link":""
-            } 
-        ],
-        "Finance": [
-            {
-                "title":"Finance",
-                "summary":"dsfdfs",
-                "link":""
-            },
-            {
-                "title":"Finance345r",
-                "summary":"FinanceFinance",
-                "link":""
-            },
-            {
-                "title":"Finance5654645",
-                "summary":"dsfdfs",
-                "link":""
-            } 
-        ]
     }
+    
+    
+    var controller = this;
+
+    for(let i= 0; i <  controller.tabs.length; i++) {
+        console.log("http://localhost/posts-server/" + controller.tabs[i])
+        
+        $http.get("http://localhost/posts-server/" + controller.tabs[i])
+        .then(function(response) {
+            controller.tabData[controller.tabs[i]] = response.data;
+            console.log( controller.tabData[controller.tabs[i]]) 
+        });
+        
+    }
+
 });
 
 
