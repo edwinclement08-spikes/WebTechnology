@@ -119,6 +119,19 @@ module.exports = function (app, passport) {
             );
         }
     });
+    // =====================================
+    // RECOVERY =====================
+    // =====================================
+
+    app.post('/recover', passport.authenticate('recover'),function(username, done) {
+        User.findOne({ 'email' :  email }, function(err, user) {
+          if (err) { return done(err); }
+          if (!user) {
+            return done(null, false, { message: 'Incorrect username.' });
+          }
+          //return done(null, user);        instead of this line, we send an email
+        })
+      });
 
     // =====================================
     // PROFILE SECTION =====================

@@ -84,7 +84,7 @@
 
             </div>
         </form>
-        <form id="recoverform" class="form-vertical" ng-controller="RecoverFormCTL as recover"  name="recoverForm" ng-submit="recoverForm.$valid && submitData(user)" novalidate  ng-class="{'form-show': $parent.formType=='recover', 'form-hide': $parent.formType !='recover'}">
+        <form id="recoverform" method="POST" action="/recover" class="form-vertical" ng-controller="RecoverFormCTL as recover"  name="recoverForm" ng-submit="recoverForm.$valid && submitData(user)" novalidate  ng-class="{'form-show': $parent.formType=='recover', 'form-hide': $parent.formType !='recover'}">
             <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
 
             <div class="controls">
