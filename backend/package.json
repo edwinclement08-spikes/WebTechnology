@@ -7,8 +7,10 @@
     "test": "docker-compose up --build"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
     "bcrypt-nodejs": "latest",
     "body-parser": "~1.0.0",
+    "cheerio": "1.0.0-rc.2",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
     "debug": "~2.6.3",
@@ -19,6 +21,7 @@
     "mongo-sanitize": "^1.0.0",
     "mongoose": "4.12.4",
     "morgan": "~1.0.0",
+    "nodemailer": "^4.3.1",
     "passport": "~0.1.17",
     "passport-facebook": "~1.0.2",
     "passport-google-oauth": "~0.1.5",
@@ -26,6 +29,6 @@
     "passport-twitter": "~1.0.2",
     "request": "^2.83.0",
     "serve-favicon": "~2.4.2",
-    "cheerio": "1.0.0-rc.2"
+    "xoauth2": "^1.2.0"
   }
 }

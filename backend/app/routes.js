@@ -1,11 +1,11 @@
 // app/routes.js
 
-var Post = require('../app/models/posts');
 
-var request = require('request');
-var querystring = require('querystring');
+var request         = require('request');
+var querystring     = require('querystring');
+var recoveryMailer          = require('../config/mailer')
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport, User) {
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -13,25 +13,6 @@ module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.redirect('/home');
     });
-
-    // =====================================
-    // NEW-LOGIN ===========================
-    // =====================================
-    // show the login form
-    // app.get('/loginPage', function(req, res) {
-    //     // render the page and pass in any flash data if it exists
-    //     res.render('loginPage.ejs', { message: req.flash('loginMessage') }); 
-    // });
-
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
-    // process the login form
-    // app.post('/loginPage', passport.authenticate('local-login', {
-    //     successRedirect : '/profile', // redirect to the secure profile section
-    //     failureRedirect : '/login', // redirect back to the signup page if there is an error
-    //     failureFlash : true // allow flash messages
-    // }));
-
 
     // =====================================
     // LOGIN ===============================
@@ -120,18 +101,27 @@ module.exports = function (app, passport) {
         }
     });
     // =====================================
-    // RECOVERY =====================
+    // RECOVERY ============================
     // =====================================
 
-    app.post('/recover', passport.authenticate('recover'),function(username, done) {
-        User.findOne({ 'email' :  email }, function(err, user) {
-          if (err) { return done(err); }
-          if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
-          }
-          //return done(null, user);        instead of this line, we send an email
+    app.post('/recover', function (req, res) {
+        User.findOne({ 'email': req.body.email }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+                req.flash('recoverMessage', "Incorrect username");
+                res.render('loginPage.ejs', { message: req.flash('recoverMessage'), formType: "recover" });
+            } else {
+                res.send("Let your will be Done, " + user.name);
+                recoveryMailer(user.email, "localhost/recover-link/42")
+
+            }
+            //return done(null, user);        instead of this line, we send an email
         })
-      });
+    });
+
+    app.get('/recover-link/42', function(req, res) {
+        res.send("You are on the path to recovery.")
+    });
 
     // =====================================
     // PROFILE SECTION =====================
@@ -261,16 +251,16 @@ module.exports = function (app, passport) {
         });
     });
 
-    // POSTS
-    // Get profile picture
-    app.get('/posts/image/:link', function (req, res, next) {
-        Posts.findOne({ 'link': req.params[link] }, function (err, post) {
-            if (err) return next(err);
-            res.contentType(post.img.contentType);
-            res.send(post.img.data);
-        });
-    });
-    ``
+    // // POSTS
+    // // Get profile picture
+    // app.get('/posts/image/:link', function (req, res, next) {
+    //     Posts.findOne({ 'link': req.params[link] }, function (err, post) {
+    //         if (err) return next(err);
+    //         res.contentType(post.img.contentType);
+    //         res.send(post.img.data);
+    //     });
+    // });
+   
 };
 
 // route middleware to make sure a user is logged in

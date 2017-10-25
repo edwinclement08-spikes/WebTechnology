@@ -103,6 +103,13 @@
                 </div>
             </div>
 
+            <div class="warning-flash-place alert-box">
+                <!-- show any messages that come back with authentication -->
+                  <% if (message.length > 0) { %>
+                      <div class="alert alert-danger"><%= message %></div>
+                  <% } %>
+              </div>
+              
             <div class="form-actions">
                 <span class="pull-left"><a href="#" ng-click="$parent.formType='login'"  class="flip-link btn btn-success to-login">&laquo; Back to login</a></span>
                 <span class="pull-right"><input type="submit" value="Recover" class="btn "  ng-disabled="recoverForm.$invalid" ng-class="{'btn-info':recoverForm.$valid == true,'btn-warning':recoverForm.$valid == false }" /></span>
