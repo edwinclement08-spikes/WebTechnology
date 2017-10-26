@@ -272,14 +272,28 @@
                             <h5>Details for new content</h5>
                           </div>
                           <div class="widget-content">
-                            <form>
+                            <form ng-controller="MyCtrl as up" name="up.upload_form">
                               <input type="text" placeholder="Title"><br>
                               <input type="text" placeholder="Summary"><br>
                               <input type="text" placeholder="Link"><br>
                               <input type="text" placeholder="Author"><br>
                               <input type="text" placeholder="Title"><br>
                               <input type="text" placeholder="Tags"><br>
-                              <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png">
+                              <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png"><br>
+                              <input 
+                              type="file" 
+                              ngf-select 
+                              ng-model="up.file" 
+                              name="file" 
+                              ngf-pattern="'image/*'"
+                              accept="image/*" 
+                              ngf-max-size="20MB" 
+                              />
+                           Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+                           <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+                           <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+                           {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                           <button type="submit" ng-click="up.submit()">submit</button>
                               <input type="submit">
                             </form>
                           </div>
@@ -302,6 +316,11 @@
                         </div>
                         <div class="widget-content" style="height:250px">
                           Hello
+                          <form>
+                            <div class="radio">
+                              <input type="radio" name="gender" value="male"> Male
+                            </div>
+                          </form>
                         </div>
                       </div>
                         <div class="row-fluid">
@@ -473,6 +492,7 @@
 <!-- <script src="js/common/matrix.popover.js"></script> -->
 <script src="js/common/jquery.dataTables.min.js"></script>
 <script src="js/common/matrix.tables.js"></script>
+<script src="js/common/ng-file-upload.min"></script>
 
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
