@@ -81,7 +81,7 @@
           <li class="">
               <a title="" href="#">
                 <i class="icon icon-cog"></i>
-                <span class="text navbar-text-ed"> Content Adder Panel</span>
+                <span class="text navbar-text-ed" ng-click="page.currentSubPage = 'Content Adder Panel'"> Content Adder Panel</span>
               </a>
             </li>
          
@@ -144,7 +144,6 @@
       </div>
     </div>
     <!--End-breadcrumbs-->
-
     <div>
       <div ng-show="page.currentSubPage == 'My Profile'">
 
@@ -258,12 +257,38 @@
             </div>
           </div>
           </div>
-          
-
-        
       </div>
     </div>
-
+    <div>
+        <div ng-show="page.currentSubPage == 'Content Adder Panel'">
+                  <div class="container-fluid">
+                      <div class="row-fluid">
+                      <div class="span12">
+                        <div class="widget-box">
+                          <div class="widget-title">
+                            <span class="icon">
+                              <i class="icon-list-alt"></i>
+                            </span>
+                            <h5>Details for new content</h5>
+                          </div>
+                          <div class="widget-content">
+                            <form>
+                              <input type="text" placeholder="Title"><br>
+                              <input type="text" placeholder="Summary"><br>
+                              <input type="text" placeholder="Link"><br>
+                              <input type="text" placeholder="Author"><br>
+                              <input type="text" placeholder="Title"><br>
+                              <input type="text" placeholder="Tags"><br>
+                              <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png">
+                              <input type="submit">
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+    </div>
 
     <div>
       <div ng-show="page.currentSubPage == 'Home'">
