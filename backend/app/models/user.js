@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
     name            : String,
     type            : String,
     recoveryId      : String,
+    liked           : [[String, String]],
     local            : {
         email        : String,
         password     : String,
@@ -26,7 +27,7 @@ var userSchema = mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
+    },
 
 });
 // User.type  can be 
