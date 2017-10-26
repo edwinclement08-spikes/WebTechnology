@@ -84,6 +84,6 @@ module.exports.push(
     [
         "http://www.sciencealert.com/nature",
         popoutScrapperFunctions("Nature")
-    ],
+    ]
 
-) 
+) ;
