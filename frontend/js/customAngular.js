@@ -2,20 +2,16 @@ var app = angular.module('squid', ['wu.masonry']);
 
 app.controller("pageCTL", function()    {
     this.subPages = [
-        ["Home"], 
-        ["Trending"], 
+        ["Home"],
+        ["Trending"],
         ["You May like this"],
         ["Updates"]
     ];
     this.currentSubPage = "Home";
 });
 
-
-
 app.controller("workspaceCTL", function () {
     this.temp = "Testing workspace controller";         // *REMOVE*
-
-    
 }
 );
 
@@ -69,7 +65,7 @@ app.controller("articleTabsCTL", function () {
                 "title":"ds3fds",
                 "content":"dsfdfs",
                 "link":""
-            }  
+            }
         ],
         "Fiction": [
             {
@@ -86,7 +82,7 @@ app.controller("articleTabsCTL", function () {
                 "title":"ds3fds",
                 "content":"dsfdfs",
                 "link":""
-            }  
+            }
         ],
         "Technology": [
             {
@@ -103,7 +99,7 @@ app.controller("articleTabsCTL", function () {
                 "title":"Technology34",
                 "content":"dsfdfs",
                 "link":""
-            } 
+            }
         ],
         "Health": [
             {
@@ -120,7 +116,7 @@ app.controller("articleTabsCTL", function () {
                 "title":"Health",
                 "content":"HealthHealthHealthHealth",
                 "link":""
-            } 
+            }
         ],
         "Finance": [
             {
@@ -137,7 +133,7 @@ app.controller("articleTabsCTL", function () {
                 "title":"Finance5654645",
                 "content":"dsfdfs",
                 "link":""
-            } 
+            }
         ]
     }
 });
@@ -249,69 +245,69 @@ app.controller("trendingCTL", function () {
                 "title":"Finance5654645",
                 "content":"dsfdfs",
                 "link":""
-            } 
+            }
         ]
-    
+
 });
 
 app.controller("postCTL", function(){
-   
+
    this.posts = [
       {
         "name":"Anish",
         "date":"5/8/2017",
-        "content": "Asadasdasdasdfa"   
+        "content": "Asadasdasdasdfa"
       },
-      
+
       {
         "name":"Edwin",
         "date":"6/8/2017",
-        "content": "Asadasdasdasdfa"   
+        "content": "Asadasdasdasdfa"
       },
       {
         "name":"Susan",
         "date":"5/8/2017",
-        "content": "Asadasdasdasdfa"   
-      },   
+        "content": "Asadasdasdasdfa"
+      },
       ]
-   
+
 });
 
 app.controller("newsCTL", function(){
-   
+
    this.data=[
-      
+
       {
          "subject":"sasfafdhdajgsda",
          "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"20",
          "month":"Jan"
       },
-      
+
       {
          "subject":"Thank uoy for the help angular",
          "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"19",
          "month":"Feb"
       },
-      
+
       {
          "subject":"express here we cme",
          "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"15",
          "month":"Dec"
       },
-      
+
       {
          "subject":"I love you jins@!!",
          "content":"ALASAPSKjsdnjasdfbaisdfuhausdpqwdjapskdnajdkbfa",
          "date":"21",
          "month":"May"
       }
-        
-      
+
+
    ]
-   
+
 });
 
 
